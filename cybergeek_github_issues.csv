@@ -1,0 +1,197 @@
+Title,Body,Assignees,Milestone,Labels
+[ENG] Add Google & GitHub OAuth via @convex-dev/auth,"Summary
+Enable social login to reduce signup friction and prevent burner accounts.
+
+Context
+Current auth uses Password + Anonymous. Add Google & GitHub OAuth. Store provider info in userProfiles.
+
+Acceptance Criteria
+- OAuth enabled for Google & GitHub
+- Login UI updated with provider buttons
+- userProfiles stores provider + verified status
+- Docs updated",,Core Launch (Weeks 1–3),"auth-security,priority-high"
+[ENG] Email verification for password signups,"Summary
+Require verified email before unlocking full-article access and posting.
+
+Context
+Improves trust & reduces spam.
+
+Acceptance Criteria
+- Verification email sent after signup
+- Unverified users see gated read/post actions
+- Verified flag persisted in userProfiles",,Core Launch (Weeks 1–3),"auth-security,priority-high"
+[ENG] RBAC: Admin role + admin-only mutations,"Summary
+Introduce admin role to manage articles, moderation, and rewards.
+
+Context
+We need privileged actions behind role checks.
+
+Acceptance Criteria
+- isAdmin boolean on userProfiles
+- Admin-only routes/mutations (publish/feature/delete, approve UGC, manage rewards)
+- Admin console link visible only to admins",,Core Launch (Weeks 1–3),"auth-security,priority-high"
+"[ENG] Rate limiting for likes, views, and search","Summary
+Add per-user throttling to reduce abuse and bot traffic.
+
+Acceptance Criteria
+- Like: 1 per article per user; idempotent
+- View: unique view counted max 1x per user/day
+- Search: throttle to N requests/min/user
+- Centralized rate-limit util in Convex",,Core Launch (Weeks 1–3),"auth-security,priority-high"
+[ENG] Extend search to headline + tags; add cursor pagination,"Summary
+Improve discoverability with richer fields and scalable pagination.
+
+Acceptance Criteria
+- Convex search index includes title, headline, tags
+- API returns cursor for infinite scroll
+- Frontend wired to use cursor pagination",,Engagement & Retention (Weeks 4–8),"data-search,priority-medium"
+[ENG] Unique views + time-on-article analytics,"Summary
+Track unique daily views and approximate read time.
+
+Acceptance Criteria
+- userActivity stores (userId, articleId, date)
+- timeOnPage events batched and aggregated daily
+- Dashboard query: top articles by uniqueViews & avg read time",,Engagement & Retention (Weeks 4–8),"data-search,priority-high"
+[ENG] Secure media uploads with MIME checks + S3,"Summary
+Allow images/video with server-side validation and responsive variants.
+
+Acceptance Criteria
+- Upload endpoint with MIME/type/size validation
+- S3 (or Convex storage) integration; signed URLs
+- Generate responsive image sizes; store width/height
+- Frontend uses lazy loading for media",,Core Launch (Weeks 1–3),"content-media,priority-high"
+[ENG] SEO: Pre-render article pages + Open Graph,"Summary
+Improve SEO and share previews.
+
+Acceptance Criteria
+- Pre-rendered article routes (Vite SSR or migrate to Next.js)
+- Meta tags: title, description, canonical
+- OG/Twitter cards with cover image
+- Sitemap.xml + robots.txt",,Core Launch (Weeks 1–3),"content-media,priority-high"
+[ENG] Accessibility & performance pass,"Summary
+Meet baseline a11y and performance targets.
+
+Acceptance Criteria
+- ESLint a11y plugin; fix alt/labels/roles
+- Keyboard navigation verified
+- LCP < 2.5s on article pages; lazy-load below-the-fold images
+- Lighthouse > 90 for Perf/A11y/Best Practices on home + article",,Engagement & Retention (Weeks 4–8),"frontend-ux,priority-medium"
+"[ENG] Validation + tests: Zod, Playwright, unit tests","Summary
+Improve reliability with schema validation and tests.
+
+Acceptance Criteria
+- Zod schemas for mutation inputs
+- Playwright e2e: read, like, earn points, claim reward, search
+- Unit tests for Convex functions (core mutations/queries)
+- CI runs tests on PRs",,Core Launch (Weeks 1–3),"testing-dx,priority-high"
+[BIZ] Launch weekly Security & AI newsletter,"Summary
+Kick off category newsletters to drive retention and sponsorships.
+
+Target KPIs
+- 1,000 subscribers in 4 weeks
+- 35%+ open rate, 10%+ CTR
+
+Steps
+- Choose ESP (MailerLite/ConvertKit)
+- Template with top posts + curated links
+- Signup CTAs across site; modal on exit-intent
+- Track UTM to site",,Core Launch (Weeks 1–3),"growth-phase1,priority-high"
+[BIZ] Creator Sprint: Post 3 pieces → Bronze badge + homepage feature,"Summary
+Campaign to seed creator content and habit.
+
+Target KPIs
+- 50 creators publish ≥3 posts in 2 weeks
+- 150 new posts total
+
+Steps
+- Landing page with rules
+- Badge automation + homepage slot
+- Discord/Twitter/LinkedIn promo kit",,Core Launch (Weeks 1–3),"growth-phase1,priority-medium"
+[BIZ] Partnerships with 10–15 cyber student clubs & Discords,"Summary
+Acquire early adopters via communities.
+
+Target KPIs
+- 10 partner groups
+- 2k member reach
+
+Steps
+- Outreach list + email template
+- Offer: featured posts + rewards
+- Co-host an AMA/session",,Core Launch (Weeks 1–3),"growth-phase1,priority-medium"
+[BIZ] Basic sponsorships in newsletters,"Summary
+Open ad inventory to early sponsors.
+
+Target KPIs
+- 4 sponsors in first 6 weeks
+- ₹5k–₹15k / $100–$300 per slot
+
+Steps
+- Media kit (audience, pricing, samples)
+- Booking form + invoicing flow
+- Ad policy & disclosure copy",,Engagement & Retention (Weeks 4–8),"growth-phase2,priority-medium"
+[BIZ] User-generated content (UGC) with moderation queue,"Summary
+Enable community posting safely.
+
+Target KPIs
+- 50 UGC posts/week by Week 8
+- <24h average review time
+
+Steps
+- Submission form + hCaptcha
+- Moderation queue (admin console)
+- Guidelines + enforcement policy",,Engagement & Retention (Weeks 4–8),"growth-phase2,auth-security,priority-high"
+[BIZ] Follow authors & categories + personalized feed,"Summary
+Increase engagement via personalization.
+
+Target KPIs
+- +20% reads/session
+- +15% 4-week retention
+
+Steps
+- Follow model; digest preferences
+- Feed sorted by follows + recency
+- Email digest based on follows",,Engagement & Retention (Weeks 4–8),"growth-phase2,priority-medium"
+"[BIZ] Streaks, badges, and seasonal leaderboards","Summary
+Level-up gamification for habit loops.
+
+Target KPIs
+- 25% of DAU with 3+ day streaks
+- +10% weekly active users
+
+Steps
+- Define badge criteria
+- Leaderboard page + anti-cheat
+- Reward redemption catalog v2",,Engagement & Retention (Weeks 4–8),"growth-phase2,priority-low"
+[BIZ] Premium tier: ad-free + deep-dives + private forum,"Summary
+Introduce subscription to diversify revenue.
+
+Target KPIs
+- 3–5% free→paid conversion
+- Churn < 5%/mo
+
+Steps
+- Paywall + entitlement checks
+- Premium content calendar
+- Forum (Discourse/Channels) for paid users",,Monetization & Scale (Months 3–6),"growth-phase3,priority-high"
+[BIZ] Jobs board (paid listings),"Summary
+Offer targeted hiring channel for tech/cyber roles.
+
+Target KPIs
+- 25 paid listings in first 3 months
+- Listing NPS > 40
+
+Steps
+- Submission + payment
+- Review/approve flow
+- Featured placements + newsletter mentions",,Monetization & Scale (Months 3–6),"growth-phase3,priority-medium"
+[BIZ] Creator Rev-Share + tipping,"Summary
+Attract and retain top creators with payouts.
+
+Target KPIs
+- 100 creators opted-in
+- ₹50k/$1k monthly tips volume
+
+Steps
+- Wallet/payout setup (Stripe Connect)
+- Policy for rev-share & eligibility
+- Creator dashboard with earnings",,Monetization & Scale (Months 3–6),"growth-phase3,priority-medium"
